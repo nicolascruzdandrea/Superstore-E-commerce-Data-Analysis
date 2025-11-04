@@ -1,4 +1,4 @@
-# 📉 Análisis de Rentabilidad en Subcategorías de Alto Impacto
+# 🛒 Superstore E-commerce Data Analysis
 
 ## 📖 Descripción del Proyecto
 
