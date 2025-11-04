@@ -35,7 +35,7 @@ Este proyecto analiza los datos de ventas de un e-commerce (*Superstore*) con el
 ---
 
 ## 📊 Origen del dataset  
-El dataset utilizado proviene de **Kaggle** [https://www.kaggle.com/datasets/vivek468/superstore-dataset-final/data].
+El dataset utilizado proviene de **Kaggle** (https://www.kaggle.com/datasets/jamsbrown/global-superstore-data-of-2016).
 
 ---
 
