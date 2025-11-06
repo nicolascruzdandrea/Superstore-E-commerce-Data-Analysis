@@ -1,4 +1,4 @@
-# 🛒 Superstore E-commerce — Data Analysis
+# 🛒 Superstore E-commerce - Data Analysis
 
 ## 📖 Descripción del proyecto
 Objetivo: Diagnosticar la causa raíz de la baja rentabilidad neta de una Superstore global a pesar del crecimiento en ventas, focalizando el análisis en la categoría Furniture y sus subcategorías críticas (Tables, Chairs, Machines).
