@@ -42,8 +42,8 @@ Dataset: Global Superstore (2016) — origen: Kaggle (https://www.kaggle.com/dat
 * **Chairs:** Margen cercano a equilibrio **–1.59%**, alta exposición por volumen; rango **15–20%** genera muchas transacciones no rentables.
 * **Machines:** Margen **–15.20%**; presenta descuentos extremos (ej. 65–70%) con pérdidas muy severas.
 
-### Patrones por categoría:
-* **Technology** muestra mayor resistencia a descuentos intermedios; sin embargo, descuentos extremos (>40%) provocan pérdidas severas también en esta categoría.
+### Relación Descuentos-Categorías:
+La categoría **Technology** muestra mayor capacidad para mantener rentabilidad frente a descuentos bajos y moderados (hasta el 30%). Sin embargo, descuentos superiores al 40% generan pérdidas significativas, evidenciando que el efecto destructivo del descuento afecta a todas las líneas de producto, aunque con distinta intensidad.
 
 ---
 
