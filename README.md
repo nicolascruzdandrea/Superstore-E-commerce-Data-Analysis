@@ -1,78 +1,87 @@
-# 🛒 Superstore E-commerce Data Analysis
+# 🛒 Superstore E-commerce — Data Analysis
 
-## 📖 Descripción del Proyecto
+## 📖 Descripción del proyecto
+Objetivo: Diagnosticar la causa raíz de la baja rentabilidad neta de una Superstore global a pesar del crecimiento en ventas, focalizando el análisis en la categoría Furniture y sus subcategorías críticas (Tables, Chairs, Machines).
 
-Este proyecto es un **análisis de rentabilidad** enfocado en el dataset global de ventas de una *Superstore*. El objetivo principal fue diagnosticar la **causa raíz de la baja rentabilidad neta** de la compañía, a pesar de registrar un crecimiento constante en ventas.
-
-El análisis se centró en la **Categoría Furniture** y en dos subcategorías de alto volumen y margen negativo: **Tables**, **Chairs** y **Machines**, identificando el impacto directo del **descuento** en la destrucción del valor.
-
----
-
-## ⚙️ Metodología Usada
-
-La metodología se basó en una exploración de datos (EDA) y una segmentación profunda, siguiendo estos pasos:
-
-1.  **Análisis Exploratorio de Datos (EDA):**
-    * Inspección de la estructura del dataset (51,290 registros y 24 columnas).
-    * Identificación de tipos de datos y manejo de valores nulos (se notó una alta tasa de valores nulos en `Postal Code`).
-
-2.  **Análisis Temporal y Estacionalidad:**
-    * Evaluación de la tendencia de ventas y beneficio a lo largo de los años.
-    * Cálculo del margen de beneficio promedio por trimestre y año, detectando la **desaceleración del crecimiento del margen**.
-
-3.  **Análisis de Rentabilidad por Categoría:**
-    * Se calculó el margen de beneficio por `Category` y `Sub-Category`.
-    * Se identificó la **Categoría Furniture** como la única generadora de pérdidas (`-3.8%`), mientras que `Technology` (`+3.3%`) y `Office Supplies` (`+2.9%`) son rentables.
-
-4.  **Análisis Profundo del Impacto del Descuento:**
-    * Se segmentaron las transacciones de las subcategorías críticas (**Tables**, **Chairs**, **Machines**) en **grupos de descuento** (ej: 0-5%, 5-10%, 15-20%).
-    * **Métricas Clave:** Se calculó el `Profit Margin`, la `Cantidad de Transacciones` y el `Profit per Unit` para cada grupo de descuento para cuantificar la fuga de capital.
+Se analizó el efecto de los descuentos sobre la rentabilidad y se propusieron medidas operativas y estratégicas para recuperar margen.
+Dataset: Global Superstore (2016) — origen: Kaggle (https://www.kaggle.com/datasets/jamsbrown/global-superstore-data-of-2016).
 
 ---
 
-## 📈 Insights y Conclusiones Principales
+## ⚙️ Metodología
+### EDA (Exploratory Data Analysis)
+* Inspección de estructura, tipos y nulos (51.290 registros, 24 columnas).
+* Estadísticas descriptivas, detección de *outliers* y visualizaciones (histogramas, *scatter*, series temporales).
 
-### 1. El Descuento como Factor Destructor de Valor
-El **descuento** es el principal factor que arrastra la rentabilidad neta. En todas las subcategorías analizadas, cualquier promoción por encima de un umbral bajo (entre el 5% y el 10%) resulta en pérdidas.
+### Preparación y reglas de representatividad
+* Limpieza y cálculo de métricas clave: **Sales, Net Profit, Profit Margin, Profit per Unit**.
+* Umbral de representatividad: **mín. 35 unidades vendidas por producto** para evitar ruido estadístico.
 
-### 2. Prioridad Crítica: Tables
-* **Problema Estructural:** `Tables` registra una pérdida catastrófica del **-19.01%** y la mayor pérdida promedio por unidad (aproximadamente **-$46.69**).
-* **Fuga por Volumen:** El **mayor volumen de transacciones no rentables** se concentra en los descuentos **moderados (15-30%)**.
+### Análisis por categoría / subcategoría
+* Cálculo de margen y pérdida por unidad por **Category** y **Sub-Category**.
+* Segmentación por **Discount Groups** (ej. 0–5%, 5–10%, 10–15%, …) para medir impacto del descuento.
 
-### 3. Fugas por Volumen vs. Fugas por Intensidad
-* **Chairs (Fuga por Volumen):** La subcategoría está cerca del equilibrio (`-1.59%`), pero la pérdida es impulsada por el **alto volumen de ventas** en el rango de descuento **15-20%**.
-* **Machines (Riesgo Extremo):** La subcategoría está en equilibrio (`-2.60%`), pero registra pérdidas extremas en el rango de **65-70% de descuento** (`-147.35%`), lo que arrastra el margen total.
-
-### 4. El Único Motor de Ganancia
-El rango de descuento **0-5%** es consistentemente el **único segmento altamente rentable** en todas las subcategorías, demostrando que el precio base o precio regular es la estrategia de venta comprobada y debe protegerse.
-
----
-
-## 💡 Recomendaciones de Negocio
-
-### 1. **Priorización de Intervención**
-Se recomienda una matriz de acción:
-* **Crítica:** `Tables` (Requiere reestructuración de costes o precio base).
-* **Alta:** `Chairs` (Requiere disciplina de descuento para asegurar rentabilidad inmediata).
-* **Media:** `Machines` (Requiere eliminar descuentos extremos).
-
-### 2. **Implementación de Política de Descuento (Regla del 10%)**
-* Establecer el **10% como el límite máximo de descuento permitido** para las subcategorías `Tables` y `Chairs`, ya que el 5-10% es el último umbral de rentabilidad.
-* **Eliminar inmediatamente** los rangos de descuento **15-30%** en `Tables/Chairs` y **65-70%** en `Machines`.
-
-### 3. **Objetivos Operativos de Costes/Precios**
-* Para `Tables`, buscar un aumento de precio o reducción de costes que compense la pérdida de **$46.69 por unidad**.
-* Para `Chairs`, una mejora de solo **$2 por unidad** aseguraría la rentabilidad total de la subcategoría.
+### Diagnóstico y recomendaciones
+* Análisis temporal de descuento promedio y su relación con el margen.
+* Identificación de rangos de descuento catastróficos y umbrales críticos.
 
 ---
 
-## 💻 Tecnologías Utilizadas
+## 📈 Principales resultados e insights
+### Magnitud del problema:
+* Órdenes totales: **51.290**.
+* Órdenes con margen negativo: **21.695** (**42.30%**). Esto indica problemas en *pricing*, *cost structure* o políticas de descuento.
 
-* **Python:** Lenguaje principal de análisis.
-* **Pandas:** Manipulación y limpieza de datos.
-* **NumPy:** Operaciones numéricas y vectoriales.
-* **Matplotlib:** Visualización de tendencias temporales y gráficos de barras.
-* **Seaborn:** Creación de gráficos estadísticos de alta calidad (ej: análisis de rentabilidad por descuentos).
+### Impacto del descuento:
+* Alta correlación negativa entre **Discount** y **Profit Margin** (coef. $\approx$ **–0.84**).
+* **Umbral crítico:** a partir del **10% de descuento** el margen tiende a colapsar.
+* **Rango consistentemente rentable:** **0–5%** (principal *driver* de volumen y margen).
 
-* ## 📊 Origen del dataset  
-El dataset utilizado proviene de **Kaggle** (https://www.kaggle.com/datasets/jamsbrown/global-superstore-data-of-2016).
+### Subcategorías críticas:
+* **Tables:** Margen **–19.01%**; pérdida por unidad $\approx$ **–€46.69** $\rightarrow$ **máximo foco de urgencia**.
+* **Chairs:** Margen cercano a equilibrio **–1.59%**, alta exposición por volumen; rango **15–20%** genera muchas transacciones no rentables.
+* **Machines:** Margen **–15.20%**; presenta descuentos extremos (ej. 65–70%) con pérdidas muy severas.
+
+### Patrones por categoría:
+* **Technology** muestra mayor resistencia a descuentos intermedios; sin embargo, descuentos extremos (>40%) provocan pérdidas severas también en esta categoría.
+
+---
+
+## 💡 Recomendaciones de negocio
+
+### Regla de descuento (acción inmediata):
+* Limitar descuento máximo recomendado al **10%** para **Tables** y **Chairs**.
+* Bloquear o requerir aprobación ejecutiva para descuentos **>20%** en **Furniture** y **Office Supplies**.
+
+### Control de promociones:
+* Evitar campañas que impulsen rangos **15–30%** en **Tables/Chairs** y **65–70%** en **Machines**. Reservar descuentos extremos solo para liquidación de inventario obsoleto con control de **LTV**.
+
+### Acciones por subcategoría:
+* **Tables:** Auditoría de coste directo (**COGS**, logística, montaje) y/o *reprice* para cubrir $\sim$**€46.7** por unidad o considerar despriorización de SKUs no rentables.
+* **Chairs:** Ajuste de política de descuentos (**cerrar 15–20%**); mejorar margen por unidad mediante pequeños incrementos de precio o reducción de coste ($\sim$€2 por unidad puede revertir pérdidas).
+* **Machines:** eliminar descuentos extremos; investigar causas de márgenes negativos por SKU.
+
+### Estrategia comercial y producto:
+* Priorizar promociones en rangos **0–5%** y **5–10%** (rentables).
+* Reemplazar descuentos de precio por **valor agregado** (envío gratuito, montaje, financiación) para mantener el precio base.
+* Implementar análisis de **CLV** para priorizar inversión comercial y retención por tipo de cliente.
+
+### Mejoras operativas:
+* Monitorizar el *discount average* por campaña y por canal; establecer alertas si supera umbrales.
+* Integrar métricas de margen en *dashboards* operativos (alertas diarias/semanales).
+
+---
+
+## 🔍 Insights accionables (resumen)
+* El descuento es el principal motor de erosión de margen; **atacar la política de descuentos es la palanca más efectiva**.
+* **Tables exige intervención inmediata** (*pricing*/cost *control*).
+* **Chairs es una oportunidad rápida:** eliminar fugas en descuentos moderados recupera márgenes por volumen.
+* El **0–5%** debe ser el núcleo de la estrategia promocional: genera la mayor parte del volumen rentable.
+
+---
+
+## 🧰 Tecnologías utilizadas
+* **Lenguaje:** Python
+* **Librerías:** Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn
+* **Notebook / Script:** Jupyter
+* **Fuente de datos:** Kaggle — Global Superstore (2016)
